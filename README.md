@@ -1,33 +1,11 @@
 # sqlalchemy-challenge
-Found solution for plotting x-axis from matplotlib.org site path: Ticks/Placing date ticks using recurrence rules.
-import datetime
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-from matplotlib.dates import (YEARLY, DateFormatter, RRuleLocator, drange,
-                              rrulewrapper)
-
-# Fixing random state for reproducibility
-np.random.seed(19680801)
+Used activities from Lesson Plans 10-Advanced-SQL to obtain results for SQLAlchemy portion of assignment.
+Needed help on histograms, watched video on YouTube Channel CodeBasics "Matplotlib Tutorial 5 - Histograms"- https://youtu.be/r75BPh1uk38?si=DzqndWRpKpGbrErO
 
 
-# tick every 5th easter
-rule = rrulewrapper(YEARLY, byeaster=1, interval=5)
-loc = RRuleLocator(rule)
-formatter = DateFormatter('%m/%d/%y')
-date1 = datetime.date(1952, 1, 1)
-date2 = datetime.date(2004, 4, 12)
-delta = datetime.timedelta(days=100)
 
-dates = drange(date1, date2, delta)
-s = np.random.rand(len(dates))  # make up some random y values
+# References
+Menne, M.J., I. Durre, R.S. Vose, B.E. Gleason, and T.G. Houston, 2012: An overview of the Global Historical Climatology Network-Daily Database. Journal of Atmospheric and Oceanic Technology, 29, 897-910, https://journals.ametsoc.org/view/journals/atot/29/7/jtech-d-11-00103_1.xmlLinks to an external site.
 
+Histogram help - YouTube Channel, CodeBasics - https://youtu.be/r75BPh1uk38?si=DzqndWRpKpGbrErO
 
-fig, ax = plt.subplots()
-plt.plot(dates, s, 'o')
-ax.xaxis.set_major_locator(loc)
-ax.xaxis.set_major_formatter(formatter)
-ax.xaxis.set_tick_params(rotation=30, labelsize=10)
-
-plt.show()
